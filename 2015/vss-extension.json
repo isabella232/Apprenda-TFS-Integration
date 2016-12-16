@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
-    "id": "build-task",
+    "id": "apprendatasks",
     "name": "Apprenda Build Tools",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "chrisdutra",
     "targets": [
         {
@@ -18,18 +18,58 @@
     },
     "files": [
         {
-            "path": "buildtask"
+            "path": "apprendatasks"
         }
     ],
     "contributions": [
         {
-            "id": "custom-build-task",
+            "id": "apprendaDemote",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "buildtask"
+                "name": "apprendatasks/apprendaDemote"
+            }
+        },
+        {
+            "id": "apprendaDeploy",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaDeploy"
+            }
+        },
+        {
+            "id": "apprendaPackage",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaPackage"
+            }
+        },
+        {
+            "id": "apprendaPromote",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaPromote"
+            }
+        },
+        {
+            "id": "apprendaScale",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaScale"
             }
         }
     ]

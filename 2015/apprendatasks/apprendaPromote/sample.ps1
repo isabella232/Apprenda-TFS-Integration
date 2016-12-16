@@ -1,8 +1,16 @@
-[CmdletBinding()]
-param()
+param(
+  [string] $pathtozip,
+  [string] $alias,
+  [string] $versionPrefix,
+  [string] $stage,
+  [string] $cloudurl,
+  [string] $clouduser,
+  [string] $cloudpw,
+  [string] $clouddevteam
+)
 
-# For more information on the VSTS Task SDK:
-# https://github.com/Microsoft/vsts-task-lib
+Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Common"
+
 Trace-VstsEnteringInvocation $MyInvocation
 try {
     # Set the working directory.

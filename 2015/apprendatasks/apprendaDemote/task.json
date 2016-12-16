@@ -1,8 +1,8 @@
 {
-  "id": "fb765e50-c211-11e6-9471-0d5c99017b97",
-  "name": "ApprendaDeploy",
-  "friendlyName": "Deploy App on Apprenda",
-  "description": "This task deploys your application onto ACP",
+  "id": "b4c571d0-c211-11e6-bbdc-fb8f436b638f",
+  "name": "ApprendaDemote",
+  "friendlyName": "Demote App on Apprenda",
+  "description": "This task demotes the application in ACP.",
   "author": "Apprenda",
   "helpMarkDown": "Replace with markdown to show in help",
   "category": "Utility",
@@ -17,7 +17,7 @@
     "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "ApprendaDeploy $(message)",
+  "instanceNameFormat": "ApprendaDemote $(message)",
   "groups": [
       {
           "name": "AppInfo",
@@ -67,13 +67,44 @@
           "helpMarkDown": "This is the desired stage of deployment. Values can be either definition, sandbox, or published.",
           "groupName": "AppInfo"
       },
-
+      {
+          "name": "cloudurl",
+          "type": "string",
+          "label": "Apprenda Cloud URL",
+          "defaultValue": "$(cloudurl)",
+          "required": true,
+          "helpMarkDown": "This is the base cloud URL that is used to connect to ACP.",
+          "groupName": "ConnInfo"
+      },
+      {
+          "name": "clouduser",
+          "type": "string",
+          "label": "Apprenda Username",
+          "defaultValue": "$(apprendauser)",
+          "required": true,
+          "helpMarkDown": "This is the username that is used to connect to ACP.",
+          "groupName": "ConnInfo"
+      },
+      {
+          "name": "cloudpw",
+          "type": "string",
+          "label": "Apprenda Password",
+          "defaultValue": "$(apprendapw)",
+          "required": true,
+          "helpMarkDown": "This is the password that is used to connect to ACP.",
+          "groupName": "ConnInfo"
+      },
+      {
+          "name": "clouddevteam",
+          "type": "string",
+          "label": "Apprenda Development Team",
+          "defaultValue": "$(devteam)",
+          "required": true,
+          "helpMarkDown": "This is the development team alias that is used to connect to ACP.",
+          "groupName": "ConnInfo"
+      }
   ],
   "execution": {
-    "Node": {
-      "target": "sample.js",
-      "argumentFormat": ""
-    },
     "PowerShell3": {
       "target": "sample.ps1"
     }

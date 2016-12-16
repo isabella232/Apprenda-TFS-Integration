@@ -1,11 +1,18 @@
-[CmdletBinding()]
-param()
+param(
+  [string] $pathtozip,
+  [string] $alias,
+  [string] $versionPrefix,
+  [string] $stage,
+  [string] $cloudurl,
+  [string] $clouduser,
+  [string] $cloudpw,
+  [string] $clouddevteam
+)
+
+Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Common"
 
 Trace-VstsEnteringInvocation $MyInvocation
 try {
-    # Get Inputs
-    [string]$apprendaCloudURL = Get-VstsInput -Name 
-
     # Set the working directory.
     $cwd = Get-VstsInput -Name cwd -Require
     Assert-VstsPath -LiteralPath $cwd -PathType Container
