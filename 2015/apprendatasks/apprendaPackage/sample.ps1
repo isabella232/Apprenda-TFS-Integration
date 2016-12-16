@@ -11,7 +11,6 @@ param(
 
 Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Common"
 
-Trace-VstsEnteringInvocation $MyInvocation
 try {
     # Set the working directory.
     $cwd = Get-VstsInput -Name cwd -Require
