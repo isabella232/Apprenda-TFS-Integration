@@ -106,7 +106,7 @@
   ],
   "execution": {
     "PowerShell3": {
-      "target": "sample.ps1"
+      "target": "package.ps1"
     }
   }
 }

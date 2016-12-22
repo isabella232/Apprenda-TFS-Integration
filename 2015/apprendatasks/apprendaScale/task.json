@@ -102,11 +102,19 @@
           "required": true,
           "helpMarkDown": "This is the development team alias that is used to connect to ACP.",
           "groupName": "ConnInfo"
+      },
+      {
+          "name": "forcenewversion",
+          "type": "boolean",
+          "label": "Force a New Version",
+          "defaultValue": false,
+          "helpMarkDown": "Check this if you want to force a new version each time a deployment is generated.",
+          "groupName": "AppInfo"
       }
   ],
   "execution": {
     "PowerShell3": {
-      "target": "sample.ps1"
+      "target": "scale.ps1"
     }
   }
 }
