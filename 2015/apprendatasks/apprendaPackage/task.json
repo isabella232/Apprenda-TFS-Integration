@@ -19,94 +19,91 @@
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "ApprendaPackage $(message)",
   "groups": [
-      {
-          "name": "AppInfo",
-          "displayName": "Application Information",
-          "isExpanded": true
-      },
-      {
-          "name": "ConnInfo",
-          "displayName": "Connection Information",
-          "isExpanded": true
-      }
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": false
+        }
   ],
   "inputs": [
-      {
-          "name": "pathtozip",
-          "type": "filePath",
-          "label": "Archive Path",
-          "defaultValue": "archive.zip",
-          "required": true,
-          "helpMarkDown": "Path of the archive being used to deploy to Apprenda.",
-          "groupName": "AppInfo"
-      },
-      {
-          "name": "alias",
-          "type": "string",
-          "label": "Applicaton Alias",
-          "defaultValue": "",
-          "required": true,
-          "helpMarkDown": "Application alias. Names must not contain spaces and must be unique to the platform.",
-          "groupName": "AppInfo"
-      },
-      {
-          "name": "versionPrefix",
-          "type": "string",
-          "label": "Version Prefix",
-          "defaultValue": "v",
-          "required": false,
-          "helpMarkDown": "This is the prefix for the version alias. This integration will increment the version number as new versions of the app are deployed.",
-          "groupName": "AppInfo"
-      },
-      {
-          "name": "stage",
-          "type": "string",
-          "label": "Target Deployment Stage",
-          "defaultValue": "Published",
-          "required": true,
-          "helpMarkDown": "This is the desired stage of deployment. Values can be either definition, sandbox, or published.",
-          "groupName": "AppInfo"
-      },
-      {
-          "name": "cloudurl",
-          "type": "string",
-          "label": "Apprenda Cloud URL",
-          "defaultValue": "$(cloudurl)",
-          "required": true,
-          "helpMarkDown": "This is the base cloud URL that is used to connect to ACP.",
-          "groupName": "ConnInfo"
-      },
-      {
-          "name": "clouduser",
-          "type": "string",
-          "label": "Apprenda Username",
-          "defaultValue": "$(apprendauser)",
-          "required": true,
-          "helpMarkDown": "This is the username that is used to connect to ACP.",
-          "groupName": "ConnInfo"
-      },
-      {
-          "name": "cloudpw",
-          "type": "string",
-          "label": "Apprenda Password",
-          "defaultValue": "$(apprendapw)",
-          "required": true,
-          "helpMarkDown": "This is the password that is used to connect to ACP.",
-          "groupName": "ConnInfo"
-      },
-      {
-          "name": "clouddevteam",
-          "type": "string",
-          "label": "Apprenda Development Team",
-          "defaultValue": "$(devteam)",
-          "required": true,
-          "helpMarkDown": "This is the development team alias that is used to connect to ACP.",
-          "groupName": "ConnInfo"
-      }
+        {
+            "name": "SolutionPath",
+            "type": "filePath",
+            "label": "Solution Path",
+            "required": true,
+            "helpMarkDown": "The solution file for the solution to package."
+        },
+        {
+            "name": "OutputPath",
+            "type": "filePath",
+            "label": "Solution Path",
+            "defaultValue": "$(Build.StagingDirectory)\\Archive.zip",
+            "required": true,
+            "helpMarkDown": "The solution file for the solution to package."
+        },
+        {
+            "name": "PrivateUI",
+            "type": "string",
+            "label": "Private UIs",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "A comma-separated list of project names that need to be considered as private UIs."
+        },
+        {
+            "name": "PublicUI",
+            "type": "string",
+            "label": "Public UIs",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "A comma-separated list of project names that need to be considered as public UIs."
+        },
+        {
+            "name": "PrivateRoot",
+            "type": "string",
+            "label": "Private Root",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "The project name that needs to be considered as the main private root."
+        },
+        {
+            "name": "PublicRoot",
+            "type": "string",
+            "label": "Public Root",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "The project name that needs to be considered as the main public root."
+        },
+        {
+            "name": "WcfService",
+            "type": "string",
+            "label": "WCF Services",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "A comma-separated list of project names that need to be considered as WCF Services."
+        },
+        {
+            "name": "WindowsService",
+            "type": "string",
+            "label": "Windows Services",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "A comma-separated list of project names that need to be considered as Windows Services."
+        },
+        {
+            "name": "Configuration",
+            "type": "string",
+            "label": "Build Configuration",
+            "defaultValue":  "Release",
+            "required": false,
+            "helpMarkDown": "The solution file for the solution to package.",
+            "groupName":  "advanced"
+        }
   ],
   "execution": {
-    "PowerShell3": {
-      "target": "package.ps1"
-    }
+        "PowerShell": {
+            "target": "$(currentDirectory)\\NewPackage.ps1",
+            "argumentFormat": "",
+            "workingDirectory": "$(currentDirectory)"
+        }
   }
 }
