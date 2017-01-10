@@ -101,7 +101,7 @@
   ],
   "execution": {
         "PowerShell": {
-            "target": "$(currentDirectory)\\NewPackage.ps1",
+            "target": "$(currentDirectory)\\package.ps1",
             "argumentFormat": "",
             "workingDirectory": "$(currentDirectory)"
         }
