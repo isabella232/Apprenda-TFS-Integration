@@ -62,13 +62,14 @@ def update_release_version(build_type=None, mock=False):
 
 # this copies the common.ps1 function out into the task directories that require it.
 def deploy_common_updates():
-    destinations = ['apprendaDemote', 'apprendaDeploy', 'apprendaPromote', 'appendaScale']
+    destinations = ['apprendaDemote', 'apprendaDeploy', 'apprendaPromote', 'apprendaScale']
     for destination in destinations:
         shutil.copyfile('../common/common.ps1', '../apprendaTasks/{0}/common.ps1'.format(destination))
 
 
 def run(build_type, mock=False):
-    update_release_version(build_type, mock)
+    if build_type != 'rebuild':
+        update_release_version(build_type, mock)
     if not mock:
         deploy_common_updates()
         build_extension()
@@ -83,7 +84,7 @@ def build_extension():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Updates release information, and builds the Apprenda TFS extension.')
-    parser.add_argument('build_type', type=str, choices=['major', 'minor', 'build'], help='Specify the build type. Values: major | minor | build')
+    parser.add_argument('build_type', type=str, choices=['major', 'minor', 'build', 'rebuild'], help='Specify the build type. Values: major | minor | build | rebuild. Rebuild does not increment version.')
     parser.add_argument('--test', dest='runtest', action='store_true', help='Run through the plan, but do not execute.')
     parser.add_argument('-v', dest='verbose', action='store_true', help='set verbosity to DEBUG level')
     parser.add_argument('-b', dest='nobackup', action='store_true', help='set this to not take a backup of the vss-extension.json file')

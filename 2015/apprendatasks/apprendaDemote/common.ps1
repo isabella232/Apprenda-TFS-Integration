@@ -18,7 +18,7 @@ function GetSessionToken($body)
     try 
     {
         Write-Verbose "Starting authentication method to Apprenda Environment."
-        $jsonOutput = Invoke-RestMethod -Uri $global:authURI -Method Post -ContentType "application/json" -Body $body -TimeoutSec 600
+        $jsonOutput = Invoke-RestMethod -Uri $global:authURI -Method Post -ContentType "application/json" -Body $body -TimeoutSec 600 -UseBasicParsing
         $global:ApprendaSessiontoken = $jsonOutput.apprendaSessionToken
         Write-Host "The Apprenda session token is: '$global:ApprendaSessiontoken'"
     }
@@ -35,7 +35,7 @@ function CreateNewApplication($alias, $name, $description)
     try
     {
         $appsBody = "{`"Name`":`"$($alias)`",`"Alias`":`"$($name)`",`"Description`":`"$($description)`"}"
-        Invoke-RestMethod -Uri $global:appsURI -Method POST -ContentType "application/json" -Headers $global:Headers -Body $appsBody -TimeoutSec 1200
+        Invoke-RestMethod -Uri $global:appsURI -Method POST -ContentType "application/json" -Headers $global:Headers -Body $appsBody -TimeoutSec 1200 -UseBasicParsing
         Write-Host "   Created '$($alias)' application."
     }
     catch [System.Exception]
@@ -53,7 +53,7 @@ function CreateNewVersion($alias, $newVersionAlias)
     {
         $versionBody = "{`"Name`":`"$($newVersionAlias)`",`"Alias`":`"$($newVersionAlias)`",`"Description`":`"`"}"
         $uri = $global:versionsURI + '/' + $alias
-        Invoke-RestMethod -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200
+        Invoke-RestMethod -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200 -UseBasicParsing
         Write-Host "   Created Version '$($newVersionAlias)' for '$($alias)'."
     }
     catch [System.Exception]
@@ -68,7 +68,7 @@ function CreateNewVersion($alias, $newVersionAlias)
 function UploadVersion($alias, $vAlias, $archive)
 {
     $uploadURI = $global:versionsURI + '/' + $alias + '/' + $vAlias + "?action=setArchive"
-    $response = Invoke-WebRequest -Uri $uploadURI -Method POST -InFile $archive -ContentType "multipart/form-data" -Headers $global:Headers -TimeoutSec 3600
+    $response = Invoke-WebRequest -Uri $uploadURI -Method POST -InFile $archive -ContentType "multipart/form-data" -Headers $global:Headers -TimeoutSec 3600 -UseBasicParsing
     if($($response.StatusCode) -eq 200 )
     {
         Write-Host "   Archive for '$($alias)' has been uploaded."
@@ -84,7 +84,7 @@ function UploadVersion($alias, $vAlias, $archive)
 function PromoteVersion($alias, $versionAlias, $stage)
 {
     $promotionURI = $global:versionsURI + '/' + $alias + '/' + $versionAlias + "?action=promote&stage=" + $stage
-    $response = Invoke-WebRequest -Uri $promotionURI -Method POST -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600
+    $response = Invoke-WebRequest -Uri $promotionURI -Method POST -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600 -UseBasicParsing
         
     if($($response.StatusCode) -eq 200 )
     {
@@ -101,7 +101,7 @@ function PromoteVersion($alias, $versionAlias, $stage)
 function DemoteVErsion($alias, $versionAlias)
 {
     $promotionURI = $global:versionsURI + '/' + $alias + '/' + $versionAlias + "?action=demote"
-    $response = Invoke-WebRequest -Uri $promotionURI -Method POST -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600
+    $response = Invoke-WebRequest -Uri $promotionURI -Method POST -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600 -UseBasicParsing
         
     if($($response.StatusCode) -eq 200 )
     {
@@ -118,7 +118,7 @@ function DemoteVErsion($alias, $versionAlias)
 
 function GetApplications()
 {
-    $response = Invoke-WebRequest -Uri $global:appsURI -Method GET -ContentType "application/json" -Headers $global:Headers -Timeoutsec 3600
+    $response = Invoke-WebRequest -Uri $global:appsURI -Method GET -ContentType "application/json" -Headers $global:Headers -Timeoutsec 3600 -UseBasicParsing
     if($($response.StatusCode) -eq 200 )
     {
         Write-Host $response
@@ -128,7 +128,7 @@ function GetApplications()
 
 function GetVersions($alias)
 {
-    $response = Invoke-WebRequest -Uri "$global:versionsURI/$alias" -Method GET -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600
+    $response = Invoke-WebRequest -Uri "$global:versionsURI/$alias" -Method GET -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600 -UseBasicParsing
     if($($response.StatusCode) -eq 200 )
     {
         Write-Host $response
@@ -149,7 +149,7 @@ function GetVersions($alias)
 #          - If version stage is sandbox | definition AND ForceNewVersion flas is $false, patch to target stage of version n.
 function GetTargetVersion($alias, $versionPrefix, $forceNewVersion)
 {
-    $versions = GEtVersions($alias)
+    $versions = GetVersions($alias)
     $matchingVersions = New-Object System.Collections.ArrayList
     # Step One - find all versions matching the prefix
     $pattern = "$versionPrefix[0-9]*"
@@ -182,7 +182,13 @@ function GetTargetVersion($alias, $versionPrefix, $forceNewVersion)
                 $highestVersionStage = $matchingVersion.vstage
             }
         }
-        if (($highestVersionStage -eq "Published") -or ($forceNewVersion))
+        # 1.10.17 - version 0.0.18
+        # as a safeguard - we may have a version with a new prefix while other versions exist. so if we are still zero, use v1
+        if ($highestVersionCount -eq 0)
+        {
+            $highestVersionCount = 1
+        }
+        if ($highestVersionCount -gt 1 -and (($highestVersionStage -eq "Published") -or ($forceNewVersion)))
         {
             $highestVersionCount = $highestVersionCount +  1
             $global:targetVersion = $versionPrefix + $highestVersionCount 
@@ -197,5 +203,6 @@ function GetTargetVersion($alias, $versionPrefix, $forceNewVersion)
             }
             $global:targetVersion = $versionPrefix + $highestVersionCount
         }
+        Write-Verbose "Global Target Version: $global:targetVersion"
     }
 }

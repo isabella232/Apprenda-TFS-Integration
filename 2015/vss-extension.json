@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "apprendatasks",
     "name": "Apprenda Build Tools",
-    "version": "0.0.18",
+    "version": "0.0.20",
     "publisher": "chrisdutra",
     "targets": [
         {
