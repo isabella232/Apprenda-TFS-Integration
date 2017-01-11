@@ -60,9 +60,17 @@ def update_release_version(build_type=None, mock=False):
         raise
 
 
+# this copies the common.ps1 function out into the task directories that require it.
+def deploy_common_updates():
+    destinations = ['apprendaDemote', 'apprendaDeploy', 'apprendaPromote', 'appendaScale']
+    for destination in destinations:
+        shutil.copyfile('../common/common.ps1', '../apprendaTasks/{0}/common.ps1'.format(destination))
+
+
 def run(build_type, mock=False):
     update_release_version(build_type, mock)
     if not mock:
+        deploy_common_updates()
         build_extension()
 
 
