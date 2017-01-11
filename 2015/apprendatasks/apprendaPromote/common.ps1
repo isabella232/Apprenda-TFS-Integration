@@ -47,14 +47,14 @@ function CreateNewApplication($alias, $name, $description)
     }     
 }
 
-function CreateNewVersion($alias, $newVersionAlias)
+function CreateNewVersion($alias)
 {
     try
     {
-        $versionBody = "{`"Name`":`"$($newVersionAlias)`",`"Alias`":`"$($newVersionAlias)`",`"Description`":`"`"}"
+        $versionBody = "{`"Name`":`"$($global:targetVersion)`",`"Alias`":`"$($global:targetVersion)`",`"Description`":`"`"}"
         $uri = $global:versionsURI + '/' + $alias
         Invoke-RestMethod -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200 -UseBasicParsing
-        Write-Host "   Created Version '$($newVersionAlias)' for '$($alias)'."
+        Write-Host "   Created Version '$($global:targetVersion)' for '$($alias)'."
     }
     catch [System.Exception]
     {
@@ -98,7 +98,7 @@ function PromoteVersion($alias, $versionAlias, $stage)
 }
 
 # We can only demote from Sandbox to Definition, this is primarily needed for user action or patching a version.
-function DemoteVErsion($alias, $versionAlias)
+function DemoteVersion($alias, $versionAlias)
 {
     $promotionURI = $global:versionsURI + '/' + $alias + '/' + $versionAlias + "?action=demote"
     $response = Invoke-WebRequest -Uri $promotionURI -Method POST -ContentType "application/json" -Headers $global:Headers -TimeoutSec 3600 -UseBasicParsing
@@ -164,7 +164,7 @@ function GetTargetVersion($alias, $versionPrefix, $forceNewVersion)
     if($matchingVersions.length -eq 0)
     {
         $global:targetVersion = $versionPrefix + "1"
-        CreateNewVersion $alias $global:targetVersion
+        CreateNewVersion $alias
     }
     # Otherwise grab the highest version number and stage.
     else
@@ -175,12 +175,14 @@ function GetTargetVersion($alias, $versionPrefix, $forceNewVersion)
         # we also will grab the stage of the highest version while we're here.
         foreach($matchingVersion in $matchingVersions)
         {
+            Write-Verbose "Version $matchingVersion.vh, $matchingVersion.vstage"
             # since 1>0, this will always hit. 
             if ($matchingVersion.vh -gt $highestVersionCount)
             {
                 $highestVersionCount = $matchingVersion.vh
                 $highestVersionStage = $matchingVersion.vstage
             }
+            Write-Verbose "After iteration, highest version is : $highestversionCount with stage: $highestVersionStage"
         }
         # 1.10.17 - version 0.0.18
         # as a safeguard - we may have a version with a new prefix while other versions exist. so if we are still zero, use v1
@@ -188,11 +190,13 @@ function GetTargetVersion($alias, $versionPrefix, $forceNewVersion)
         {
             $highestVersionCount = 1
         }
-        if ($highestVersionCount -gt 1 -and (($highestVersionStage -eq "Published") -or ($forceNewVersion)))
+        # issue 1 - this functionality needs to be split out a bit
+        if (($highestVersionCount -gt 1 -and (($highestVersionStage -eq "Published") -or ($forceNewVersion -eq $true))) -or
+        ($highestVersionCount -eq 1 -and $highestVersionStage -eq "Published"))
         {
             $highestVersionCount = $highestVersionCount +  1
             $global:targetVersion = $versionPrefix + $highestVersionCount 
-            CreateNewVersion $alias $global:targetVersion
+            CreateNewVersion $alias
         }
         else
         {

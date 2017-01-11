@@ -42,13 +42,6 @@ if(-not [System.String]::IsNullOrEmpty($PrivateUI))
 "@
 }
 
-if(-not [System.String]::IsNullOrEmpty($PublicUI))
-{
-    $cmd += @"
- -PI "$PublicUI"
-"@
-}
-
 if(-not [System.String]::IsNullOrEmpty($PrivateRoot))
 {
     $cmd += @"
@@ -56,12 +49,6 @@ if(-not [System.String]::IsNullOrEmpty($PrivateRoot))
 "@
 }
 
-if(-not [System.String]::IsNullOrEmpty($PublicRoot))
-{
-    $cmd += @"
- -PublicRoot "$PublicRoot"
-"@
-}
 
 if(-not [System.String]::IsNullOrEmpty($WcfService))
 {

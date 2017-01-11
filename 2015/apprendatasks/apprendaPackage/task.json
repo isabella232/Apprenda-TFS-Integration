@@ -59,28 +59,12 @@
             "helpMarkDown": "A comma-separated list of project names that need to be considered as private UIs."
         },
         {
-            "name": "PublicUI",
-            "type": "string",
-            "label": "Public UIs",
-            "defaultValue": "",
-            "required": false,
-            "helpMarkDown": "A comma-separated list of project names that need to be considered as public UIs."
-        },
-        {
             "name": "PrivateRoot",
             "type": "string",
             "label": "Private Root",
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "The project name that needs to be considered as the main private root."
-        },
-        {
-            "name": "PublicRoot",
-            "type": "string",
-            "label": "Public Root",
-            "defaultValue": "",
-            "required": false,
-            "helpMarkDown": "The project name that needs to be considered as the main public root."
         },
         {
             "name": "WcfService",
