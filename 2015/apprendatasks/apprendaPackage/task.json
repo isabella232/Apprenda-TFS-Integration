@@ -42,6 +42,15 @@
             "helpMarkDown": "The solution file for the solution to package."
         },
         {
+            "name": "Build",
+            "type": "boolean",
+            "label": "Build First Before Packaging",
+            "defaultValue": "False",
+            "required": true,
+            "helpMarkdown": "Check this to enable building the solution first before packaging it.",
+            "group": "advanced"
+        },
+        {
             "name": "PrivateUI",
             "type": "string",
             "label": "Private UIs",
@@ -100,10 +109,8 @@
         }
   ],
   "execution": {
-        "PowerShell": {
-            "target": "$(currentDirectory)\\package.ps1",
-            "argumentFormat": "",
-            "workingDirectory": "$(currentDirectory)"
-        }
+    "PowerShell3": {
+      "target": "package.ps1"
+    }
   }
 }

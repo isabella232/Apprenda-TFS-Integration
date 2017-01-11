@@ -99,8 +99,8 @@ try {
             {
                 CreateNewVersion $alias $versionPrefix+"1"
             }
-            $targetVersion = $versionPrefix + "1"
-            $response = UploadVersion $alias $targetVersion $fullpath
+            $global:targetVersion = $versionPrefix + "1"
+            $response = UploadVersion $alias $global:targetVersion $fullpath
         }
         else
         # Use Case - Application does exist, figure out what version we require to patch, creating the new version if necessary
