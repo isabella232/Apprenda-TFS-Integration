@@ -8,7 +8,7 @@
 
 Typically here the step you want to execute is "Package App on Apprenda" - which behind the scenes is going to utilize a portable version of the Apprenda Cloud Shell (a.k.a. ACS) to package up the application. A screenshot of how to use this is depicted below.
 
-![](https://s3.amazonaws.com/apprenda-github-docs/tfs/newpackage.png)
+![](https://s3.amazonaws.com/apprenda-github-docs/tfs/newpackage2.png)
 
 The fields are filled in as follows:
 
