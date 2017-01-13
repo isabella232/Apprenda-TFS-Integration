@@ -36,7 +36,7 @@
         {
             "name": "OutputPath",
             "type": "filePath",
-            "label": "Solution Path",
+            "label": "Output Path",
             "defaultValue": "$(Build.StagingDirectory)\\Archive.zip",
             "required": true,
             "helpMarkDown": "The solution file for the solution to package."
