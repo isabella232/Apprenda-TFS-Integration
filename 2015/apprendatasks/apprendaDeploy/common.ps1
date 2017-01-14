@@ -18,7 +18,7 @@ function GetSessionToken($body)
     try 
     {
         Write-Verbose "Starting authentication method to Apprenda Environment."
-        $jsonOutput = Invoke-WebRequest -Uri $global:authURI -Method Post -ContentType "application/json" -Body $body -TimeoutSec 600 -UseBasicParsing
+        $jsonOutput = Invoke-RestMethod -Uri $global:authURI -Method Post -ContentType "application/json" -Body $body -TimeoutSec 600
         $global:ApprendaSessiontoken = $jsonOutput.apprendaSessionToken
         Write-Host "The Apprenda session token is: '$global:ApprendaSessiontoken'"
     }
