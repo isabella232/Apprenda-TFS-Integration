@@ -18,7 +18,7 @@ function GetSessionToken($body)
     try 
     {
         Write-Verbose "Starting authentication method to Apprenda Environment."
-        $jsonOutput = Invoke-RestMethod -Uri $global:authURI -Method Post -ContentType "application/json" -Body $body -TimeoutSec 600 -UseBasicParsing
+        $jsonOutput = Invoke-WebRequest -Uri $global:authURI -Method Post -ContentType "application/json" -Body $body -TimeoutSec 600 -UseBasicParsing
         $global:ApprendaSessiontoken = $jsonOutput.apprendaSessionToken
         Write-Host "The Apprenda session token is: '$global:ApprendaSessiontoken'"
     }
@@ -53,7 +53,7 @@ function CreateNewVersion($alias)
     {
         $versionBody = "{`"Name`":`"$($global:targetVersion)`",`"Alias`":`"$($global:targetVersion)`",`"Description`":`"`"}"
         $uri = $global:versionsURI + '/' + $alias
-        Invoke-RestMethod -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200 -UseBasicParsing
+        Invoke-WebRequest -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200 -UseBasicParsing
         Write-Host "   Created Version '$($global:targetVersion)' for '$($alias)'."
     }
     catch [System.Exception]
