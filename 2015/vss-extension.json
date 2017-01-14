@@ -9,7 +9,7 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
-    "description": "Tools for deploying your application to Apprenda.",
+    "description": "Tools for deploying your application to the Apprenda Cloud Platform.",
     "categories": [
         "Build and release"
     ],
