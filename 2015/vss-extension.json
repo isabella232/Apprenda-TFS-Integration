@@ -1,0 +1,76 @@
+{
+    "manifestVersion": 1,
+    "id": "apprendatasks",
+    "name": "Apprenda Build Tools",
+    "version": "1.1.1",
+    "publisher": "chrisdutra",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tools for deploying your application to the Apprenda Cloud Platform.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "logo.jpg"
+    },
+    "files": [
+        {
+            "path": "apprendatasks"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "apprendaDemote",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaDemote"
+            }
+        },
+        {
+            "id": "apprendaDeploy",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaDeploy"
+            }
+        },
+        {
+            "id": "apprendaPackage",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaPackage"
+            }
+        },
+        {
+            "id": "apprendaPromote",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaPromote"
+            }
+        },
+        {
+            "id": "apprendaScale",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apprendatasks/apprendaScale"
+            }
+        }
+    ]
+}
