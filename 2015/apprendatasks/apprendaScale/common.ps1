@@ -35,7 +35,7 @@ function CreateNewApplication($alias, $name, $description)
     try
     {
         $appsBody = "{`"Name`":`"$($alias)`",`"Alias`":`"$($name)`",`"Description`":`"$($description)`"}"
-        Invoke-RestMethod -Uri $global:appsURI -Method POST -ContentType "application/json" -Headers $global:Headers -Body $appsBody -TimeoutSec 1200
+        Invoke-WebRequest -Uri $global:appsURI -Method POST -ContentType "application/json" -Headers $global:Headers -Body $appsBody -TimeoutSec 1200 -UseBasicParsing
         Write-Host "   Created '$($alias)' application."
     }
     catch [System.Exception]
@@ -53,7 +53,7 @@ function CreateNewVersion($alias)
     {
         $versionBody = "{`"Name`":`"$($global:targetVersion)`",`"Alias`":`"$($global:targetVersion)`",`"Description`":`"`"}"
         $uri = $global:versionsURI + '/' + $alias
-        Invoke-RestMethod -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200
+        Invoke-WebRequest -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200 -UseBasicParsing
         Write-Host "   Created Version '$($global:targetVersion)' for '$($alias)'."
     }
     catch [System.Exception]

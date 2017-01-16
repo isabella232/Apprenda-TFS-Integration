@@ -1,7 +1,7 @@
 {
   "id": "0e116640-c212-11e6-8090-953ff2ebe1d5",
   "name": "ApprendaPackage",
-  "friendlyName": "Package App on Apprenda",
+  "friendlyName": "Apprenda - Package .NET Application",
   "description": "This task packages up your application for deployment.",
   "author": "Apprenda",
   "helpMarkDown": "Replace with markdown to show in help",
@@ -12,9 +12,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "0",
-    "Minor": "1",
-    "Patch": "0"
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "ApprendaPackage $(message)",

@@ -1,7 +1,7 @@
 {
   "id": "7a1aad20-c211-11e6-ad5a-25bbae9f7db5",
   "name": "ApprendaPromote",
-  "friendlyName": "Promote App on Apprenda",
+  "friendlyName": "Apprenda - Promote Application",
   "description": "This task promotes your application to the next stage on ACP.",
   "author": "Apprenda",
   "helpMarkDown": "Replace with markdown to show in help",
@@ -12,9 +12,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "0",
-    "Minor": "1",
-    "Patch": "0"
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "ApprendaPromote $(message)",

@@ -1,7 +1,7 @@
 {
   "id": "28eb7be0-c212-11e6-9c6f-252c537978de",
   "name": "ApprendaScale",
-  "friendlyName": "Scale Application on Apprenda",
+  "friendlyName": "Apprenda - Scale Application",
   "description": "This task scales your Application on ACP",
   "author": "Apprenda",
   "helpMarkDown": "Replace with markdown to show in help",
@@ -12,9 +12,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "0",
-    "Minor": "1",
-    "Patch": "0"
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "ApprendaScale $(message)",
