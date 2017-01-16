@@ -53,7 +53,7 @@ function CreateNewVersion($alias)
     {
         $versionBody = "{`"Name`":`"$($global:targetVersion)`",`"Alias`":`"$($global:targetVersion)`",`"Description`":`"`"}"
         $uri = $global:versionsURI + '/' + $alias
-        Invoke-RestMethod -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200
+        Invoke-WebRequest -Uri $uri -Method POST -ContentType "application/json" -Headers $global:Headers -Body $versionBody -TimeoutSec 1200
         Write-Host "   Created Version '$($global:targetVersion)' for '$($alias)'."
     }
     catch [System.Exception]
