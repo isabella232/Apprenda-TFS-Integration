@@ -1,7 +1,7 @@
 {
   "id": "fb765e50-c211-11e6-9471-0d5c99017b97",
   "name": "ApprendaDeploy",
-  "friendlyName": "Apprenda - Deploy Appllication",
+  "friendlyName": "Apprenda - Deploy Application",
   "description": "This task deploys your application onto ACP",
   "author": "Apprenda",
   "helpMarkDown": "Replace with markdown to show in help",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "1",
     "Minor": "0",
-    "Patch": "1"
+    "Patch": "2"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "ApprendaDeploy $(message)",
