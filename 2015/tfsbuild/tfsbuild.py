@@ -5,15 +5,18 @@ import os
 import shutil
 import argparse
 import logging
-import subprocess
 
+# github issue #12 - we're forcing the change of the path now so relative files should work everywhere
+# except probably mac osx
+FILE_PATH = os.path.abspath(__file__)
+os.chdir(FILE_PATH)
 
 # check working directory, update as needed
-def check_working_directory():
-    filepath = os.path.dirname(os.path.realpath(__file__))
-    # no sense in checking, just change it for this execution.
-    # cwd = os.getcwd()
-    os.chdir(filepath)
+# def check_working_directory():
+#    filepath = os.path.dirname(os.path.realpath(__file__))
+#    # no sense in checking, just change it for this execution.
+#    # cwd = os.getcwd()
+#    os.chdir(filepath)
 
 
 # private method to help find the nth character in a string
