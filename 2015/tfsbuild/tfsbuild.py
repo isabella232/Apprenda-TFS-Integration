@@ -8,7 +8,7 @@ import logging
 
 # github issue #12 - we're forcing the change of the path now so relative files should work everywhere
 # except probably mac osx
-FILE_PATH = os.path.abspath(__file__)
+FILE_PATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(FILE_PATH)
 
 # check working directory, update as needed
