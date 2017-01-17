@@ -67,7 +67,7 @@ def update_release_version(build_type=None, mock=False):
 def deploy_common_updates():
     destinations = ['apprendaDemote', 'apprendaDeploy', 'apprendaPromote', 'apprendaScale']
     for destination in destinations:
-        shutil.copyfile('../common/common.ps1', '../apprendaTasks/{0}/common.ps1'.format(destination))
+        shutil.copyfile('../common/common.ps1', '../apprendatasks/{0}/common.ps1'.format(destination))
 
 
 def run(build_type, mock=False):
