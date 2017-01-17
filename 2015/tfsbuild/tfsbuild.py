@@ -82,8 +82,15 @@ def build_extension():
     from subprocess import Popen, PIPE
     # give me the cwd and change it to the parent
     parent = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-    p = Popen(['tfx', 'extension', 'create', '--manifest-blobs', r'..\vss-extension.json', '--output-path', 'bin/'], stdout=PIPE, stderr=PIPE, shell=True, cwd=parent)
-    logger.info(p.communicate())
+    # issue here - windows supports this... uncomment the below line if you are running python on windows
+    # p = Popen(['tfx', 'extension', 'create', '--manifest-blobs', r'..\vss-extension.json', '--output-path', 'bin/'], stdout=PIPE, stderr=PIPE, shell=True, cwd=parent)
+    # uncomment the below line if you are running python on *nix
+    p = Popen(['tfx extension create --manifest-blobs ../vss-extension.json --output-path ./bin/'])
+    # don't care as much that they aren't in sync, its fine.
+    for line in p.stdout:
+        logger.info(line)
+    for line in p.stderr:
+        logger.error(line)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Updates release information, and builds the Apprenda TFS extension.')
