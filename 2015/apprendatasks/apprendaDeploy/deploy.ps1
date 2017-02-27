@@ -62,6 +62,13 @@ try {
         exit 1
     }
 
+    # Ensure the application alias is less than or equal to 20 characters
+    if($alias.length -gt 20)
+    {
+        Write-Error "The application alias cannot be more than 20 characters"
+        exit 1                
+    }
+
     # Sanitize URLs and Authenticate
     FormatURL $AppsEndpointURI $cloudurl ([ref]$global:appsURI)
     Write-Verbose "global:appsuri: $global:appsURI"
