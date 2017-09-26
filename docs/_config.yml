@@ -4,5 +4,4 @@ site:
   show_downloads: "false"
 sass: 
   style: compressed
-baseurl: Apprenda-TFS-Integration
   
