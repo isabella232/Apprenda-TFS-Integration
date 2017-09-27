@@ -126,20 +126,26 @@
       "type": "boolean"
     }
   ], 
+  "execution": {
+    "PowerShell3": {
+      "target": "deploy.ps1"
+    }
+  }, 
   "instanceNameFormat": "ApprendaDeploy $(message)", 
   "description": "This task deploys your application onto ACP", 
-  "demands": [], 
   "author": "Apprenda", 
+  "demands": [], 
   "visibility": [
     "Build", 
     "Release"
   ], 
-  "helpMarkDown": "Deploys an application archive to an Apprenda Cloud instance", 
   "version": {
     "Major": 1, 
     "Minor": 2, 
-    "Patch": 10
+    "Patch": 11
   }, 
+  "helpMarkDown": "Deploys an application archive to an Apprenda Cloud instance", 
+  "friendlyName": "Apprenda - Deploy Application", 
   "groups": [
     {
       "isExpanded": true, 
@@ -152,12 +158,6 @@
       "name": "ConnInfo"
     }
   ], 
-  "friendlyName": "Apprenda - Deploy Application", 
-  "execution": {
-    "PowerShell3": {
-      "target": "deploy.ps1"
-    }
-  }, 
   "id": "fb765e50-c211-11e6-9471-0d5c99017b97", 
   "minimumAgentVersion": "1.95.0", 
   "name": "ApprendaDeploy"

@@ -83,20 +83,26 @@
       "type": "string"
     }
   ], 
+  "execution": {
+    "PowerShell3": {
+      "target": "scale.ps1"
+    }
+  }, 
   "instanceNameFormat": "ApprendaScale $(message)", 
   "description": "This task scales your Application Version on a target Apprenda Cloud Platform", 
-  "demands": [], 
   "author": "Apprenda", 
+  "demands": [], 
   "visibility": [
     "Build", 
     "Release"
   ], 
-  "helpMarkDown": "This task sets the [desired instance counts](http://docs.apprenda.com/6-0/scaling) for your Application Version", 
   "version": {
     "Major": 1, 
     "Minor": 2, 
-    "Patch": 10
+    "Patch": 11
   }, 
+  "helpMarkDown": "This task sets the [desired instance counts](http://docs.apprenda.com/6-0/scaling) for your Application Version", 
+  "friendlyName": "Apprenda - Scale Application", 
   "groups": [
     {
       "isExpanded": true, 
@@ -109,12 +115,6 @@
       "name": "ConnInfo"
     }
   ], 
-  "friendlyName": "Apprenda - Scale Application", 
-  "execution": {
-    "PowerShell3": {
-      "target": "scale.ps1"
-    }
-  }, 
   "id": "28eb7be0-c212-11e6-9c6f-252c537978de", 
   "minimumAgentVersion": "1.95.0", 
   "name": "ApprendaScale"

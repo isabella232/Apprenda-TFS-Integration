@@ -83,20 +83,26 @@
       "type": "string"
     }
   ], 
+  "execution": {
+    "PowerShell3": {
+      "target": "demote.ps1"
+    }
+  }, 
   "instanceNameFormat": "ApprendaDemote $(message)", 
   "description": "This task demotes the application in ACP.", 
-  "demands": [], 
   "author": "Apprenda", 
+  "demands": [], 
   "visibility": [
     "Build", 
     "Release"
   ], 
-  "helpMarkDown": "Replace with markdown to show in help", 
   "version": {
     "Major": 1, 
     "Minor": 2, 
-    "Patch": 10
+    "Patch": 11
   }, 
+  "helpMarkDown": "Replace with markdown to show in help", 
+  "friendlyName": "Apprenda - Demote Application", 
   "groups": [
     {
       "isExpanded": true, 
@@ -109,12 +115,6 @@
       "name": "ConnInfo"
     }
   ], 
-  "friendlyName": "Apprenda - Demote Application", 
-  "execution": {
-    "PowerShell3": {
-      "target": "demote.ps1"
-    }
-  }, 
   "id": "b4c571d0-c211-11e6-bbdc-fb8f436b638f", 
   "minimumAgentVersion": "1.95.0", 
   "name": "ApprendaDemote"
