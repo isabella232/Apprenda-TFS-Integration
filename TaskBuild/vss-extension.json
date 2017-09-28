@@ -10,65 +10,68 @@
   "icons": {
     "default": "logo.jpg"
   }, 
+  "galleryFlags": [
+    "Preview"
+  ], 
+  "version": "1.2.13", 
+  "id": "apprendatasks", 
+  "contributions": [
+    {
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ], 
+      "type": "ms.vss-distributed-task.task", 
+      "id": "apprendaDemote", 
+      "properties": {
+        "name": "apprendatasks/apprendaDemote"
+      }
+    }, 
+    {
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ], 
+      "type": "ms.vss-distributed-task.task", 
+      "id": "apprendaDeploy", 
+      "properties": {
+        "name": "apprendatasks/apprendaDeploy"
+      }
+    }, 
+    {
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ], 
+      "type": "ms.vss-distributed-task.task", 
+      "id": "apprendaPackage", 
+      "properties": {
+        "name": "apprendatasks/apprendaPackage"
+      }
+    }, 
+    {
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ], 
+      "type": "ms.vss-distributed-task.task", 
+      "id": "apprendaPromote", 
+      "properties": {
+        "name": "apprendatasks/apprendaPromote"
+      }
+    }, 
+    {
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ], 
+      "type": "ms.vss-distributed-task.task", 
+      "id": "apprendaScale", 
+      "properties": {
+        "name": "apprendatasks/apprendaScale"
+      }
+    }
+  ], 
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ], 
-  "version": "1.2.12", 
-  "contributions": [
-    {
-      "id": "apprendaDemote", 
-      "type": "ms.vss-distributed-task.task", 
-      "properties": {
-        "name": "apprendatasks/apprendaDemote"
-      }, 
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ]
-    }, 
-    {
-      "id": "apprendaDeploy", 
-      "type": "ms.vss-distributed-task.task", 
-      "properties": {
-        "name": "apprendatasks/apprendaDeploy"
-      }, 
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ]
-    }, 
-    {
-      "id": "apprendaPackage", 
-      "type": "ms.vss-distributed-task.task", 
-      "properties": {
-        "name": "apprendatasks/apprendaPackage"
-      }, 
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ]
-    }, 
-    {
-      "id": "apprendaPromote", 
-      "type": "ms.vss-distributed-task.task", 
-      "properties": {
-        "name": "apprendatasks/apprendaPromote"
-      }, 
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ]
-    }, 
-    {
-      "id": "apprendaScale", 
-      "type": "ms.vss-distributed-task.task", 
-      "properties": {
-        "name": "apprendatasks/apprendaScale"
-      }, 
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ]
-    }
-  ], 
-  "id": "apprendatasks", 
   "categories": [
     "Build and release"
   ], 
