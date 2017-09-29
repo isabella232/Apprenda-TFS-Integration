@@ -11,9 +11,15 @@
     "default": "logo.jpg"
   }, 
   "galleryFlags": [
-    "Preview"
+    "Preview", 
+    "Public"
   ], 
-  "version": "1.2.13", 
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  }, 
+  "version": "1.2.19", 
   "id": "apprendatasks", 
   "contributions": [
     {

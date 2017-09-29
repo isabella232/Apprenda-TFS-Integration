@@ -84,7 +84,18 @@
   ], 
   "instanceNameFormat": "ApprendaPromote $(message)", 
   "description": "This task promotes your application to the next stage on ACP.", 
+  "demands": [], 
   "author": "Apprenda", 
+  "visibility": [
+    "Build", 
+    "Release"
+  ], 
+  "id": "e9e407ac-3611-4bc0-bfaa-fe8e561f2314", 
+  "version": {
+    "Major": 1, 
+    "Minor": 2, 
+    "Patch": 18
+  }, 
   "groups": [
     {
       "isExpanded": true, 
@@ -97,24 +108,13 @@
       "name": "ConnInfo"
     }
   ], 
-  "demands": [], 
-  "visibility": [
-    "Build", 
-    "Release"
-  ], 
-  "version": {
-    "Major": 1, 
-    "Minor": 2, 
-    "Patch": 12
-  }, 
-  "helpMarkDown": "This task will promote an application version to its next stage in the [Apprenda Lifecycle Model](http://docs.apprenda.com/6-5/promotion-redesign)", 
   "friendlyName": "Apprenda - Promote Application", 
   "execution": {
     "PowerShell3": {
       "target": "promote.ps1"
     }
   }, 
-  "id": "7a1aad20-c211-11e6-ad5a-25bbae9f7db5", 
+  "helpMarkDown": "This task will promote an application version to its next stage in the [Apprenda Lifecycle Model](http://docs.apprenda.com/6-5/promotion-redesign)", 
   "minimumAgentVersion": "1.95.0", 
   "name": "ApprendaPromote"
 }
