@@ -85,17 +85,17 @@
   ], 
   "instanceNameFormat": "ApprendaDemote $(message)", 
   "description": "This task demotes the application in ACP.", 
-  "demands": [], 
   "author": "Apprenda", 
+  "demands": [], 
   "visibility": [
     "Build", 
     "Release"
   ], 
-  "id": "0656daa4-6a1c-442a-957a-ef3377323933", 
+  "name": "ApprendaDemote", 
   "version": {
     "Major": 1, 
     "Minor": 2, 
-    "Patch": 18
+    "Patch": 19
   }, 
   "groups": [
     {
@@ -115,7 +115,7 @@
       "target": "demote.ps1"
     }
   }, 
-  "helpMarkDown": "Replace with markdown to show in help", 
+  "id": "0656daa4-6a1c-442a-957a-ef3377323933", 
   "minimumAgentVersion": "1.95.0", 
-  "name": "ApprendaDemote"
+  "helpMarkDown": "Replace with markdown to show in help"
 }

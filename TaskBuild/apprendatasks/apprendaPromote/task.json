@@ -84,17 +84,17 @@
   ], 
   "instanceNameFormat": "ApprendaPromote $(message)", 
   "description": "This task promotes your application to the next stage on ACP.", 
-  "demands": [], 
   "author": "Apprenda", 
+  "demands": [], 
   "visibility": [
     "Build", 
     "Release"
   ], 
-  "id": "e9e407ac-3611-4bc0-bfaa-fe8e561f2314", 
+  "name": "ApprendaPromote", 
   "version": {
     "Major": 1, 
     "Minor": 2, 
-    "Patch": 18
+    "Patch": 19
   }, 
   "groups": [
     {
@@ -114,7 +114,7 @@
       "target": "promote.ps1"
     }
   }, 
-  "helpMarkDown": "This task will promote an application version to its next stage in the [Apprenda Lifecycle Model](http://docs.apprenda.com/6-5/promotion-redesign)", 
+  "id": "e9e407ac-3611-4bc0-bfaa-fe8e561f2314", 
   "minimumAgentVersion": "1.95.0", 
-  "name": "ApprendaPromote"
+  "helpMarkDown": "This task will promote an application version to its next stage in the [Apprenda Lifecycle Model](http://docs.apprenda.com/6-5/promotion-redesign)"
 }

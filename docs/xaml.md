@@ -15,4 +15,4 @@
 1. Commit and sync the changes.
 1. Publish the branch.
 1. Open TFS Team Explorer
-1. Open Build | Manage Build.
+1. Open Build& #124; Manage Build.

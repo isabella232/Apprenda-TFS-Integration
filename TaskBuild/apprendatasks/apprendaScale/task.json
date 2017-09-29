@@ -85,17 +85,17 @@
   ], 
   "instanceNameFormat": "ApprendaScale $(message)", 
   "description": "This task scales your Application Version on a target Apprenda Cloud Platform", 
-  "demands": [], 
   "author": "Apprenda", 
+  "demands": [], 
   "visibility": [
     "Build", 
     "Release"
   ], 
-  "id": "1e818644-5634-4a15-a4b7-0edd047266dd", 
+  "name": "ApprendaScale", 
   "version": {
     "Major": 1, 
     "Minor": 2, 
-    "Patch": 18
+    "Patch": 19
   }, 
   "groups": [
     {
@@ -115,7 +115,7 @@
       "target": "scale.ps1"
     }
   }, 
-  "helpMarkDown": "This task sets the [desired instance counts](http://docs.apprenda.com/6-0/scaling) for your Application Version", 
+  "id": "1e818644-5634-4a15-a4b7-0edd047266dd", 
   "minimumAgentVersion": "1.95.0", 
-  "name": "ApprendaScale"
+  "helpMarkDown": "This task sets the [desired instance counts](http://docs.apprenda.com/6-0/scaling) for your Application Version"
 }
